@@ -4,18 +4,21 @@ const expressHandlebars = require('express-handlebars');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 const index = require('./routes/index');
+const engines = require('consolidate');
 
 const app = express();
 
 // View engine setup
-app.engine('handlebars', expressHandlebars({defaultLayout: 'app'}));
+app.engine('handlebars', engine.handlebars);
+app.engine('html', engines.mustache);
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'handlebars');
+// app.set('view engine', 'handlebars');
 
 if (process.env.NODE_ENV !== 'test') {
   app.use(logger('dev'));
 }
 app.use(bodyParser.urlencoded({extended: false}));
+app.set('view engine', 'html');
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
@@ -35,7 +38,7 @@ app.use((err, req, res, next) => {
 
   // Render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render('error.handlebars');
 });
 
 module.exports = app;

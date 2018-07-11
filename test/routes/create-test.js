@@ -4,20 +4,31 @@ const {buildVideoObject} = require('../test-utils');
 const request = require('supertest');
 const app = require('../../app.js');
 
-describe('server path /videos', () => {
+describe('server path /videos/create', () => {
 	beforeEach(connectAndDrop);
 	afterEach(disconnect);
 
 	describe('POST', () => {
-		it('responds with status code 201', async () => {
-			const video = buildVideoObject;
+		it('redirects with sucessful creation', async () => {
+			const video = buildVideoObject();
 
 			const response = await request(app)
-				.post('/videos')
-				.type('form')
-				.send({video});
+			.post('/videos/create')
+			.type('form')
+			.send(video);
 
-			assert.equal(response.status, 201);
+			assert.equal(response.status, 302);
+
+		});
+		it('returns error code 400 with bad request', async () => {
+			const video = buildVideoObject();
+			video.title = '';
+			const response = await request(app)
+			.post('/videos/create')
+			.type('form')
+			.send(video);
+
+			assert.equal(response.status, 400);
 
 		});
 	});
