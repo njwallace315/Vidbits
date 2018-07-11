@@ -6,6 +6,16 @@
 </head>
 <body>
   <div class="contents-container" id="videos-container">
+    {{#each items as |item|}}
+    <div class="video-card">
+        <div class="video-player">
+            <iframe class="video-player" src="{{item.videoUrl}}" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="video-title">
+          {{item.title}}
+        </div>
+      </div>
+    {{/each}}
   </div>
 </div>
 <div id="navigation">
