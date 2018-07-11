@@ -1,20 +1,29 @@
 const router = require('express').Router();
-const Video = require('../models/video.js');
+const Item = require('../models/video');
 
-router.get('/', (req, res, next) => {
+router.get('/', async (req, res, next) => {
 	res.render('index');
 });
 
-router.get('/videos/create', (req, res, next) => {
-	res.render('/videos/create');
+router.get('/videos/create', async (req, res, next) => {
+	res.render('videos/create');
 });
 
-// router.post('/videos/create', async (req, res, next) => {
-// 	const {title, description, videoUrl} = req.body;
-// 	const item = await Video.create({title, description, videoUrl}, (err) => {
-// 		if (err) res.status(400).send();
-// 	});
-// 	res.redirect('/')	
-// });
+router.post('/videos/create', async (req, res, next) => {
+	const {title, description, videoUrl} = req.body;
+	// console.log('**************************')
+	// console.log('title: ', title);
+	// console.log('description: ', description);
+	// console.log('videoUrl: ', videoUrl);
+	// console.log('**************************')
+	const item = await Item.create({title, description, videoUrl}, (err) => {
+		if (err) { 
+			res.status(400).send();
+		};
+	});
+
+	
+	res.redirect('/')
+});
 
 module.exports = router;

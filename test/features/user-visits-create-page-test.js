@@ -4,7 +4,7 @@ const {buildVideoObject} = require('../test-utils');
 describe('user visits create', () => {
 	describe('posts a new video', () => {
 		it('renders the new video', () => {
-			browser.url('/videos/create.html');
+			browser.url('/videos/create');
 			const video = buildVideoObject();
 			
 			browser.setValue('#title-input', video.title);
