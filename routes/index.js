@@ -19,12 +19,12 @@ router.post('/videos/create', async (req, res, next) => {
 	// console.log('**************************')
 	const item = await Item.create({title, description, videoUrl}, (err) => {
 		if (err) { 
-			res.status(400).send();
+			res.status(400).send(); 
 		};
 	});
-
-	
-	res.redirect('/')
+	//the following commented out line gets stuck on a page that disoplays "redirecting to '/' "
+	//res.redirect(201, 'index');
+	res.redirect('/');
 });
 
 module.exports = router;

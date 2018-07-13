@@ -13,6 +13,7 @@ describe('user visits create', () => {
 			browser.click('#submit-button');
 
 			assert.include(browser.getText('body'), video.title);
+			assert.include(browser.getAttribute('body iframe', 'src'), video.videoUrl);
 		});
 	});
 });
