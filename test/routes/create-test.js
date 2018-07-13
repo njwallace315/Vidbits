@@ -64,8 +64,10 @@ describe('server path /videos/create', () => {
 			.type('form')
 			.send(video);
 
-			assert.include(parseTextFromHTML(response.text, 'body'), video.description);
-			const element = jsdom(response.text).querySelector('input[id="videoUrl-input"]');
+			let element = jsdom(response.text).querySelector('input[id="title-input"]');
+			assert.equal(element.value, video.title);
+			assert.include(parseTextFromHTML(response.text, 'textarea'), video.description);
+			element = jsdom(response.text).querySelector('input[id="videoUrl-input"]');
 			assert.equal(element.value, video.videoUrl);
 		});
 	});

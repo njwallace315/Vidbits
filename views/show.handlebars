@@ -1,0 +1,34 @@
+<body>
+  <div class="single-video-container">
+    <div class="single-video-card">
+      <div class="single-video-contents">
+
+        <div id="video-title" class="single-video-title">
+          {{video.title}}
+        </div>
+        <div class="single-video-img">
+          <iframe class="video-player" src={{video.videoUrl}} frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div id="video-description" class="single-video-description">
+          {{video.description}}
+        </div>
+        <div class="single-video-navigation">
+          <a href="/">
+            <img class="back-arrow" src="/img/back.svg" alt="back">
+          </a>
+          <a href="/{{video._id}}/update" id="update-button">
+            <div class="button update-button">
+              Update
+            </div>
+          </a>
+          <a href="/{{video._id}}/delete" id="delete-button">
+            <div class="button delete-button">
+              Delete
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>

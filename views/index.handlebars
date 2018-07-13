@@ -6,13 +6,28 @@
 </head>
 <body>
   <div class="contents-container" id="videos-container">
-    {{#each items as |item|}}
+    {{#each videos as |video|}}
     <div class="video-card">
-        <div class="video-player">
-            <iframe class="video-player" src={{item.videoUrl}} frameborder="0" allowfullscreen></iframe>
+      <div class="image-overlay">
+          <div class="overlay-button delete-button">
+            <!--TODO: this delete button is not ckickable-->
+            <form id="delete-{{video._id}}" class="delete-form" action="/{{video._id}}/delete" method="post">
+              <img src="/img/delete.svg" alt="delete">
+              <p>Delete</p>
+            </form>
+          </div>
+          <div class="overlay-button view-button">
+            <a href="/{{video._id}}" id="view-button">
+              <img src="/img/play.svg" alt="view">
+              <p>View</p>
+            </a>
+          </div>
         </div>
-        <div class="video-title">
-          {{item.title}}
+        <div class="video-player">
+            <iframe class="video-player" src={{video.videoUrl}} frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="video-title" >
+          <a id="video-title" href="/{{video._id}}">{{video.title}}</a>
         </div>
       </div>
     {{/each}}
@@ -21,7 +36,7 @@
 <div id="navigation">
   <a href="/create">
     <div class="create-button" id="create-button">
-      <p>Add new item</p>
+      <p>Add new video</p>
     </div>
   </a>
 </div>

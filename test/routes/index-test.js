@@ -17,6 +17,5 @@ describe(`server path '/'`, () => {
 
 			assert.include(parseTextFromHTML(response.text, 'body'), video.title);
 		});
-		
 	});
 });
