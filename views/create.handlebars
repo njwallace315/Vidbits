@@ -6,7 +6,10 @@
 </head>
 <body>
   <h2>Save a video</h2>
-  <form class="input-form" action="/videos/create" method="post">
+  <p>{{err.noTitleMessage}}</p>
+  <p>{{err.noDescriptionMessage}}</p>
+  <p>{{err.noVideoUrlMessage}}</p>
+  <form class="input-form" action="/create" method="post">
     <input id="title-input" placeholder="Video Title" name="title"></input>
     <textarea id="description-input" placeholder="Type your description here." name="description"></textarea>
     <input id="videoUrl-input" placeholder="Video URL" name="videoUrl"></input>
