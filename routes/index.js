@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const Item = require('../models/video');
+const Video = require('../models/video');
 
 router.get('/', async (req, res, next) => {
-	const items = await Item.find({});
+	const items = await Video.find({});
 	res.render('index', {items});
 });
 
@@ -17,7 +17,7 @@ router.post('/videos/create', async (req, res, next) => {
 	// console.log('description: ', description);
 	// console.log('videoUrl: ', videoUrl);
 	// console.log('**************************')
-	const item = await Item.create({title, description, videoUrl}, (err) => {
+	const item = await Video.create({title, description, videoUrl}, (err) => {
 		if (err) { 
 			res.status(400).send(); 
 		};

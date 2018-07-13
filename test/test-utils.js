@@ -1,4 +1,4 @@
-const {Video} = require('../models/video.js');
+const Video = require('../models/video.js');
 const {jsdom} = require('jsdom');
 
 
@@ -22,7 +22,7 @@ const parseTextFromHTML = (htmlAsString, selector) => {
 
 // Add a sample Item object to mongodb
 const seedVideoToDatabase = async (options = {}) => {
-  const video = await Video.create(buildItemObject(options));
+  const video = await Video.create(buildVideoObject(options));
   return video;
 };
 

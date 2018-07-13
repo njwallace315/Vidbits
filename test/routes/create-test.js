@@ -1,6 +1,6 @@
 const {assert} = require('chai');
 const {connectAndDrop, disconnect} = require('../setup-teardown-utils.js')
-const {buildVideoObject, parseTextFromHTML} = require('../test-utils');
+const {buildVideoObject} = require('../test-utils');
 const request = require('supertest');
 const app = require('../../app.js');
 
@@ -9,7 +9,7 @@ describe('server path /videos/create', () => {
 	afterEach(disconnect);
 
 	describe('POST', () => {
-		it('sends 302 on sucessful creation', async () => {
+		it('sends 302 on sucessful creation and redirection', async () => {
 			const video = buildVideoObject();
 
 			const response = await request(app)
