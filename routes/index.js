@@ -23,7 +23,8 @@ router.post('/create', async (req, res, next) => {
 			if (!description) err.noDescriptionMessage = 'Could not find description input';
 			if (!videoUrl) err.noVideoUrlMessage = 'Could not find videoUrl input';  
 			res.status(400);
-			res.render('create', {err: err});
+
+			res.render('create', {err, title, description, videoUrl});
 		};
 	});
 	//the following commented out line gets stuck on a page that disoplays "redirecting to '/' "

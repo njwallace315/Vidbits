@@ -10,9 +10,9 @@
   <p>{{err.noDescriptionMessage}}</p>
   <p>{{err.noVideoUrlMessage}}</p>
   <form class="input-form" action="/create" method="post">
-    <input id="title-input" placeholder="Video Title" name="title"></input>
-    <textarea id="description-input" placeholder="Type your description here." name="description"></textarea>
-    <input id="videoUrl-input" placeholder="Video URL" name="videoUrl"></input>
+    <input id="title-input" placeholder="Video Title" name="title" value={{title}}></input>
+    <textarea id="description-input" placeholder="Type your description here." name="description">{{description}}</textarea>
+    <input id="videoUrl-input" placeholder="Video URL" name="videoUrl" value={{videoUrl}}></input>
     <button type="submit" id="submit-button">Submit</button>
   </form>
 </body>

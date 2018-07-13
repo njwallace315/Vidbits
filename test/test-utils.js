@@ -26,7 +26,6 @@ const seedVideoToDatabase = async (options = {}) => {
   return video;
 };
 
-
 module.exports = {
   buildVideoObject,
   parseTextFromHTML,
