@@ -1,18 +1,12 @@
-<head>
-  <title>VidBits</title>
-  <link rel="icon" type="image/ico" href="../img/favicon.ico">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,500" rel="stylesheet">
-  <link rel='stylesheet' href='../stylesheets/style.css'>
-</head>
-<body>
+<div>
   <h2>Save a video</h2>
   <p>{{err.noTitleMessage}}</p>
   <p>{{err.noDescriptionMessage}}</p>
   <p>{{err.noVideoUrlMessage}}</p>
   <form class="input-form" action="/create" method="post">
-    <input id="title-input" placeholder="Video Title" name="title" value={{title}}></input>
+    <input id="title-input" placeholder="Video Title" name="title" value="{{title}}"></input>
     <textarea id="description-input" placeholder="Type your description here." name="description">{{description}}</textarea>
-    <input id="videoUrl-input" placeholder="Video URL" name="videoUrl" value={{videoUrl}}></input>
+    <input id="videoUrl-input" placeholder="Video URL" name="videoUrl" value="{{videoUrl}}"></input>
     <button type="submit" id="submit-button">Submit</button>
   </form>
-</body>
+</div>

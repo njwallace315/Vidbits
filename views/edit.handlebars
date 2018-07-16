@@ -1,0 +1,10 @@
+<div>
+  <h2>Edit Video</h2>
+  <p>{{err.message}}</p>
+  <form class="input-form" action="/{{video._id}}/edit" href="{{video._id}}/edit" method="post">
+    <input id="title-input" placeholder="Video Title" name="title" value="{{video.title}}"></input>
+    <textarea id="description-input" placeholder="Type your description here." name="description">{{video.description}}</textarea>
+    <input id="videoUrl-input" placeholder="Video URL" name="videoUrl" value="{{video.videoUrl}}"></input>
+    <button type="submit" id="submit-button">Submit</button>
+  </form>
+</div>

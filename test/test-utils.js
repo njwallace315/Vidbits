@@ -7,6 +7,7 @@ const buildVideoObject = (options = {}) => {
   const title = options.title || 'My favorite video';
   const videoUrl = options.videoUrl || 'https://youtu.be/4WgT9gy4zQA';
   const description = options.description || 'I could sing it by heart';
+  const _id = options._id || 1;
   return {title, videoUrl, description};
 };
 

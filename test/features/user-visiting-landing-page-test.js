@@ -45,7 +45,7 @@ describe('user visits root', () => {
 				browser.click('#submit-button');
 				browser.url('/');
 
-				browser.click('#view-button');
+				browser.click('#video-title');
 
 				assert.include(browser.getText('body'), video.title);
 				assert.include(browser.getAttribute('body iframe', 'src'), video.videoUrl);

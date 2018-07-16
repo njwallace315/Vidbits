@@ -33,6 +33,32 @@ router.get('/:id', async (req, res, next) => {
 	res.render('show', {video});
 });
 
+router.get('/:id/edit', async (req, res, next) => {
+	const video = await Video.findById(req.params.id);
+	res.render('edit', {video});
+});
+
+
+router.post('/:id/edit', async (req, res, next) => {
+	const {title, description, videoUrl} = req.body;
+	if(!title || !description || !videoUrl) {
+		const err = {
+			message: 'Please fill out all forms',
+			status: 400,
+		};
+		const video = await Video.findById(req.params.id);
+		res.status(err.status);
+		res.render('edit', {err, video});
+	} else {
+		await Video.findByIdAndUpdate(req.params.id, {title, description, videoUrl});
+	//similar to the issue in the create post route, the following line gets stuck
+	//res.redirect(`/${req.params.id}`)
+	const video = await Video.findById(req.params.id);
+	res.render('show', {video});
+	}
+	
+});
+
 router.get('/:id/delete', async (req, res, next) => {
 	await Video.findByIdAndRemove(req.params.id, (err) => {
 		if (err) res.status(404).send();

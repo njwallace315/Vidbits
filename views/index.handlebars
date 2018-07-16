@@ -1,37 +1,29 @@
-<head>
-  <title>VidBits</title>
-  <link rel="icon" type="image/ico" href="img/favicon.ico">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,500" rel="stylesheet">
-  <link rel='stylesheet' href='stylesheets/style.css'>
-</head>
-<body>
-  <div class="contents-container" id="videos-container">
-    {{#each videos as |video|}}
-    <div class="video-card">
-      <div class="image-overlay">
-          <div class="overlay-button delete-button">
-            <!--TODO: this delete button is not ckickable-->
-            <form id="delete-{{video._id}}" class="delete-form" action="/{{video._id}}/delete" method="post">
-              <img src="/img/delete.svg" alt="delete">
-              <p>Delete</p>
-            </form>
-          </div>
-          <div class="overlay-button view-button">
-            <a href="/{{video._id}}" id="view-button">
-              <img src="/img/play.svg" alt="view">
-              <p>View</p>
-            </a>
-          </div>
-        </div>
-        <div class="video-player">
-            <iframe class="video-player" src={{video.videoUrl}} frameborder="0" allowfullscreen></iframe>
-        </div>
-        <div class="video-title" >
-          <a id="video-title" href="/{{video._id}}">{{video.title}}</a>
-        </div>
+<div class="contents-container" id="videos-container">
+  {{#each videos as |video|}}
+  <div class="video-card">
+    <div class="image-overlay">
+      <div class="overlay-button delete-button">
+        <!--TODO: this delete button is not ckickable-->
+        <a href="/{{video._id}}/delete" id="{{video_id}}-delete-button">
+          <img src="/img/Delete.svg" />
+        </a>
       </div>
-    {{/each}}
+      <div class="overlay-button view-button">
+        <a href="/{{video._id}}/edit" id="edit-button-{{video_id}}">
+          <img src="/img/play.svg" alt="view">
+          <p>Edit</p>
+        </a>
+      </div>
+    </div>
+    <div class="video-player">
+      <iframe class="video-player" src={{video.videoUrl}} frameborder="0" allowfullscreen></iframe>
+    </div>
+    <div class="video-title" >
+      <a id="video-title" href="/{{video._id}}">{{video.title}}</a>
+    </div>
   </div>
+  {{/each}}
+</div>
 </div>
 <div id="navigation">
   <a href="/create">
@@ -40,4 +32,3 @@
     </div>
   </a>
 </div>
-</body>
