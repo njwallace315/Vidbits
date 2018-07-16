@@ -3,7 +3,6 @@ const {connectAndDrop, disconnect} = require('../setup-teardown-utils.js')
 const {parseTextFromHTML, seedVideoToDatabase, buildVideoObject} = require('../test-utils');
 const request = require('supertest');
 const app = require('../../app.js');
-const {jsdom} = require('jsdom');
 
 describe(`server path /:id/edit`, () => {
 	beforeEach(connectAndDrop);
@@ -37,7 +36,7 @@ describe(`server path /:id/edit`, () => {
 				.send({title: 'Updated title', description: video.description, videoUrl: video.videoUrl});
 
 			assert.include(parseTextFromHTML(response.text, 'body'), 'Updated title');
-			assert.equal(response.status, 200);
+			assert.equal(response.status, 302);
 		});
 		it('re-loads page if missing fields', async () => {
 			let video = await seedVideoToDatabase();

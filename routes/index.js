@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const Video = require('../models/video');
+const url = require('url');
 
 router.get('/', async (req, res, next) => {
 	const videos = await Video.find({});
@@ -54,8 +55,9 @@ router.post('/:id/edit', async (req, res, next) => {
 	//similar to the issue in the create post route, the following line gets stuck
 	//res.redirect(`/${req.params.id}`)
 	const video = await Video.findById(req.params.id);
-	res.render('show', {video});
-	}
+		res.status(302);
+		res.render('show', {video});
+	};
 	
 });
 

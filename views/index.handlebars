@@ -3,9 +3,13 @@
   <div class="video-card">
     <div class="image-overlay">
       <div class="overlay-button delete-button">
-        <!--TODO: this delete button is not ckickable-->
+        <div class="video-title" >
+          <a id="video-title" href="/{{video._id}}">
+          <h2>{{video.title}}</h2>
+        </a>
+        </div>
         <a href="/{{video._id}}/delete" id="{{video_id}}-delete-button">
-          <img src="/img/Delete.svg" />
+          <p>Delete</p>
         </a>
       </div>
       <div class="overlay-button view-button">
@@ -17,9 +21,6 @@
     </div>
     <div class="video-player">
       <iframe class="video-player" src={{video.videoUrl}} frameborder="0" allowfullscreen></iframe>
-    </div>
-    <div class="video-title" >
-      <a id="video-title" href="/{{video._id}}">{{video.title}}</a>
     </div>
   </div>
   {{/each}}

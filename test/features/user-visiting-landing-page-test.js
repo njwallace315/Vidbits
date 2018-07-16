@@ -51,6 +51,8 @@ describe('user visits root', () => {
 				assert.include(browser.getAttribute('body iframe', 'src'), video.videoUrl);
 				assert.include(browser.getText('body'), video.description);
 			});
+
+			
 		});
 	});
 });
